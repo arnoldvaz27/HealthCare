@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">Health Care</string>
+    <string name="back_arrow_image">Sending user to choose Screen</string>
+    <string name="log_in">Log in</string>
+    <string name="choose_profile_type">Choose Profile Type</string>
+    <string name="add_doctor">Add Doctor</string>
+    <string name="name">Name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="search_nurses">Search nurses</string>
+    <string name="view">View</string>
+    <string name="edit">Edit</string>
+    <string name="search_ambulances">Search ambulances</string>
+    <string name="add_ambulance">Add Ambulance</string>
+    <string name="enter_number_plate">Enter number plate</string>
+    <string name="enter_number_of_persons">Enter number of persons</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="search_doctors">Doctors</string>
+    <string name="health_care">Health Care</string>
+    <string name="date_joining">Date Of Joining</string>
+    <string name="add_medicine">Add Medicine</string>
+    <string name="enter_stock_of_medicine">Stock of medicine</string>
+    <string name="enter_stock_expiry_date">Stock expiry of medicine</string>
+    <string name="stock_arrived">Stock arrived date</string>
+    <string name="add_bed">Add Bed</string>
+    <string name="add_canteen">Add Food</string>
+    <string name="add_service">Add Service</string>
+    <string name="add_patient">Add Patient</string>
+    <string name="number">Number:</string>
+    <string name="persons">Persons:</string>
+    <string name="choose_status">Choose Status</string>
+    <string name="bed_number">Bed Number:</string>
+    <string name="room_number">Room Number:</string>
+    <string name="floor">Floor:</string>
+    <string name="search_beds">Search beds</string>
+    <string name="search_food_category">Search food category</string>
+    <string name="food_name">Food Name:</string>
+    <string name="price">Price</string>
+    <string name="edit_price">Edit Price</string>
+    <string name="experience">Experience</string>
+    <string name="name_of_medicine">Name of medicine</string>
+    <string name="medicine_name">Medicine Name:</string>
+    <string name="stock">Stock</string>
+    <string name="stock_expiry">Stock Expiry:</string>
+    <string name="edit_stock">Edit Stock</string>
+    <string name="search_medicines">Search medicines</string>
+    <string name="nurse_name">Nurse Name:</string>
+    <string name="designation">Designation</string>
+    <string name="email">Email</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender:</string>
+    <string name="date_joined">Date Joined</string>
+    <string name="edit_details">Edit Details</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="disease_type">Disease Type</string>
+    <string name="doctor_appointed">Doctor Appointed</string>
+    <string name="choose_status_type">Choose status type</string>
+    <string name="cured">Cured</string>
+    <string name="under_treatment">Under Treatment</string>
+    <string name="search_patients">Search patients</string>
+    <string name="patient_number">Patient Number:</string>
+    <string name="disease_name">Disease Name:</string>
+    <string name="status">Status:</string>
+    <string name="edit_status">Edit Status</string>
+    <string name="save">Save</string>
+    <string name="discard">Discard</string>
+    <string name="service_name">Service Name</string>
+    <string name="start_date">Start Date</string>
+    <string name="date">Date:</string>
+    <string name="close">Close</string>
+    <string name="delete">Delete</string>
+    <string name="todo">TODO</string>
+    <string name="example">Example</string>
+    <string name="search_services">Search services</string>
+    <string name="none">None</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="reset">Reset</string>
+    <string name="medicines">Medicines</string>
+    <string name="doctors">Doctors</string>
+    <string name="patients">Patients</string>
+    <string name="services">Services</string>
+    <string name="beds">Beds</string>
+    <string name="ambulances">Ambulances</string>
+    <string name="nurses">Nurses</string>
+    <string name="canteen">Canteen</string>
+
+    <string-array name="PatientStatus">
+        <item>Choose Status</item>
+        <item>Cured</item>
+        <item>Under Treatment</item>
+    </string-array>
+
+    <string-array name="BedStatus">
+        <item>Choose Status</item>
+        <item>Available</item>
+        <item>Booked</item>
+    </string-array>
+
+    <string-array name="AmbulanceStatus">
+        <item>Choose Status</item>
+        <item>Available</item>
+        <item>Booked</item>
+    </string-array>
+</resources>

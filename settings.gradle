@@ -1,0 +1,10 @@
+rootProject.name = "HealthCare"
+include ':app'
+include ':Doctors'
+include ':Medicines'
+include ':Patients'
+include ':Services'
+include ':Beds'
+include ':Ambulances'
+include ':Canteen'
+include ':Nurses'
