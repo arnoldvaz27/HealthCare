@@ -97,7 +97,7 @@ public class Login extends AppCompatActivity {
             }else{
                 String username = Username.getText().toString();
                 String password = Password.getText().toString();
-                if(username.equals("healthcare@admin.com") && password.equals("28072021Admin")){
+                if(username.equals("healthcare@admin.com") && password.equals("123456")){
                     final SharedPreferences fieldsVisibility1 = getSharedPreferences("login", MODE_PRIVATE);
                     final SharedPreferences.Editor fieldsVisibility2 = fieldsVisibility1.edit();
                     fieldsVisibility2.putString("username", username);

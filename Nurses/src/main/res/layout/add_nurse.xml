@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:includeFontPadding="false"
-            android:text="@string/add_doctor"
+            android:text="@string/add_nurse"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_18ssp" />
@@ -44,8 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,7 +70,7 @@
                     android:id="@+id/name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -112,7 +110,7 @@
                     android:id="@+id/designation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -123,8 +121,6 @@
                     android:textColorHint="@color/hint"
                     android:textSize="@dimen/_15ssp"
                     android:importantForAutofill="no" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -152,7 +148,7 @@
                     android:id="@+id/age"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -163,8 +159,6 @@
                     android:textColorHint="@color/hint"
                     android:textSize="@dimen/_15ssp"
                     android:importantForAutofill="no" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -189,10 +183,10 @@
                     android:contentDescription="@string/todo" />
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/floor"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -203,8 +197,6 @@
                     android:textColorHint="@color/hint"
                     android:textSize="@dimen/_15ssp"
                     android:importantForAutofill="no" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -229,10 +221,10 @@
                     android:contentDescription="@string/todo" />
 
                 <EditText
-                    android:id="@+id/phoneNumber"
+                    android:id="@+id/stockArrive"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -243,8 +235,6 @@
                     android:textColorHint="@color/hint"
                     android:textSize="@dimen/_15ssp"
                     android:importantForAutofill="no" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -259,20 +249,11 @@
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:weightSum="2">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_weight="0.2"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:src="@drawable/date"
-                    app:tint="@color/white"
-                    android:contentDescription="@string/todo" />
-
                 <EditText
                     android:id="@+id/dateJoining"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="2"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -282,7 +263,23 @@
                     android:textColor="@color/white"
                     android:textColorHint="@color/hint"
                     android:textSize="@dimen/_15ssp"
-                    android:importantForAutofill="no" />
+                    android:importantForAutofill="no"
+                    android:enabled="false"/>
+
+                <ImageView
+                    android:id="@+id/dateOfJoiningImage"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:contentDescription="@string/none"
+                    android:src="@drawable/date"
+                    app:layout_constraintBottom_toBottomOf="@+id/startDate"
+                    app:layout_constraintEnd_toEndOf="@+id/startDate"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/startDate"
+                    app:layout_constraintTop_toBottomOf="@+id/serviceName"
+                    app:tint="@color/white" />
 
             </LinearLayout>
 
@@ -310,7 +307,7 @@
                     android:id="@+id/gender"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"

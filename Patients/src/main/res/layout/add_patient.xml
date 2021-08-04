@@ -26,6 +26,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_18ssp" />
 
+
         <ImageView
             android:id="@+id/addDoctor"
             android:layout_width="@dimen/_30sdp"
@@ -72,7 +73,7 @@
                     android:id="@+id/name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -109,10 +110,10 @@
                     android:contentDescription="@string/todo" />
 
                 <EditText
-                    android:id="@+id/phoneNumber"
+                    android:id="@+id/stockArrive"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -151,7 +152,7 @@
                     android:id="@+id/diseaseType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"
@@ -191,7 +192,7 @@
                     android:id="@+id/doctorAppointed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.6"
+                    android:layout_weight="1.8"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginStart="@dimen/_3sdp"
                     android:background="@null"

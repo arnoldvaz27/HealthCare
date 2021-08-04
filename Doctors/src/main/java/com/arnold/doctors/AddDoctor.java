@@ -70,8 +70,8 @@ public class AddDoctor extends AppCompatActivity {
         name = findViewById(R.id.name);
         designation = findViewById(R.id.designation);
         age = findViewById(R.id.age);
-        email = findViewById(R.id.email);
-        phoneNumber = findViewById(R.id.phoneNumber);
+        email = findViewById(R.id.floor);
+        phoneNumber = findViewById(R.id.stockArrive);
         experience = findViewById(R.id.experience);
         gender = findViewById(R.id.gender);
         male = findViewById(R.id.male);

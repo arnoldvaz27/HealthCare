@@ -74,33 +74,32 @@
             <EditText
                 android:id="@+id/stock"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_height="48dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_7sdp"
                 android:background="@null"
+                android:enabled="false"
                 android:gravity="center_vertical"
                 android:hint="@string/stock"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
-                android:maxLines="1"
                 android:inputType="number"
+                android:maxLines="1"
                 android:paddingStart="@dimen/_8sdp"
                 android:paddingEnd="@dimen/_8sdp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/hint"
                 android:textSize="@dimen/_13ssp"
-                app:layout_constraintTop_toBottomOf="@id/inputName"
-                android:enabled="false"
-                />
+                app:layout_constraintTop_toBottomOf="@id/inputName" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_7sdp"
             android:weightSum="2"
             tools:ignore="UseCompoundDrawables">
 
@@ -144,7 +143,7 @@
                 app:tint="@color/white" />
 
             <TextView
-                android:id="@+id/phoneNumber"
+                android:id="@+id/stockArrive"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"

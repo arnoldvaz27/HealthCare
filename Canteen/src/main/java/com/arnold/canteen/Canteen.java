@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -57,7 +60,13 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
         canteenAdapter = new CanteenAdapter(canteensList, Canteen.this);
         RecyclerView.setHasFixedSize(true);
         RecyclerView.setAdapter(canteenAdapter);
-        getCountries();
+        getFood();
+        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Info();
+            }
+        });
         addFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +130,8 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
 
                     });
                 }
-
+                dialogAddFood.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 dialogAddFood.show();
             }
         });
@@ -155,7 +165,7 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
         canteenAdapter = new CanteenAdapter(canteensList, Canteen.this);
         RecyclerView.setHasFixedSize(true);
         RecyclerView.setAdapter(canteenAdapter);
-        getCountries();
+        getFood();
     }
     void showToast(String message) {
         Toast toast = new Toast(Canteen.this);
@@ -169,7 +179,7 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
         toast.setView(view);
         toast.show();
     }
-    private void getCountries() {
+    private void getFood() {
         @SuppressLint("StaticFieldLeak")
         class getFoodTask extends AsyncTask<Void, Void, List<Canteens>> {
 
@@ -294,5 +304,28 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
 
         bottomSheetDialog.setContentView(sheetView);
         bottomSheetDialog.show();
+    }
+
+    private void Info() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(Canteen.this,R.style.AlertDialog);
+        builder.setTitle("Note");
+        builder.setCancelable(false);
+
+        final TextView groupNameField = new TextView(Canteen.this);
+        groupNameField.setText("1) Click on the add button and enter the required details. \n\n2) After adding the food, it will appear in the list. You can click on it to delete, edit food price. \n\n3) You can search the food by the name using the search field");
+        groupNameField.setPadding(20,30,20,20);
+        groupNameField.setTextColor(Color.BLACK);
+
+        groupNameField.setBackgroundColor(Color.WHITE);
+        builder.setView(groupNameField);
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
     }
 }

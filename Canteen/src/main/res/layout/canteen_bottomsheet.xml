@@ -78,7 +78,7 @@
                 android:layout_height="@dimen/_35sdp"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:background="@null"
                 android:gravity="center_vertical"
                 android:hint="@string/price"

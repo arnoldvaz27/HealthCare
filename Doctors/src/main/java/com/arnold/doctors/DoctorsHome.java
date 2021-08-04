@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -62,6 +64,12 @@ public class DoctorsHome extends AppCompatActivity implements DoctorsListeners {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(doctorsAdapter);
         getDoctors();
+        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Info();
+            }
+        });
         addDoctor.setOnClickListener(v -> {
             addDoctor.setEnabled(false);
             startActivity(new Intent(getApplicationContext(),AddDoctor.class));
@@ -136,7 +144,7 @@ public class DoctorsHome extends AppCompatActivity implements DoctorsListeners {
         name = sheetView.findViewById(R.id.name);
         number = sheetView.findViewById(R.id.number);
         designation = sheetView.findViewById(R.id.doctorDesignation);
-        email = sheetView.findViewById(R.id.email);
+        email = sheetView.findViewById(R.id.floor);
         age = sheetView.findViewById(R.id.age);
         gender = sheetView.findViewById(R.id.gender);
         experience = sheetView.findViewById(R.id.experience);
@@ -267,5 +275,27 @@ public class DoctorsHome extends AppCompatActivity implements DoctorsListeners {
 
         toast.setView(view);
         toast.show();
+    }
+    private void Info() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(DoctorsHome.this,R.style.AlertDialog);
+        builder.setTitle("Note");
+        builder.setCancelable(false);
+
+        final TextView groupNameField = new TextView(DoctorsHome.this);
+        groupNameField.setText("1) Click on the add button and enter the required details. \n\n2) While choosing the profile type, click on the male or female image to set the profile type. \n\n3) After clicking on the correct symbol, it will appear in the list. You can click on it to delete, edit the details of the doctor. \n\n4) You can search the doctor by their name using the search field");
+        groupNameField.setPadding(20,30,20,20);
+        groupNameField.setTextColor(Color.BLACK);
+
+        groupNameField.setBackgroundColor(Color.WHITE);
+        builder.setView(groupNameField);
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
     }
 }

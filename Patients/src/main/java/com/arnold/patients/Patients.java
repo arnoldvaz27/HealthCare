@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arnold.doctors.DoctorsHome;
 import com.arnold.patients.adapters.PatientsAdapter;
 import com.arnold.patients.database.PatientsDatabase;
 import com.arnold.patients.entities.Patient;
@@ -59,6 +62,12 @@ public class Patients extends AppCompatActivity implements PatientListeners {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         displayPatients();
+        findViewById(com.arnold.doctors.R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Info();
+            }
+        });
         addPatient.setOnClickListener(v -> {
             addPatient.setEnabled(false);
             startActivity(new Intent(getApplicationContext(), AddPatient.class));
@@ -89,7 +98,7 @@ public class Patients extends AppCompatActivity implements PatientListeners {
         patientsAdapter = new PatientsAdapter(this, patientList, Patients.this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(patientsAdapter);
-        getCountries();
+        getPatients();
     }
 
     @Override
@@ -119,7 +128,7 @@ public class Patients extends AppCompatActivity implements PatientListeners {
         editingGrid = sheetView.findViewById(R.id.editingGrid);
         viewingGrid = sheetView.findViewById(R.id.viewingGrid);
         name = sheetView.findViewById(R.id.name);
-        number = sheetView.findViewById(R.id.phoneNumber);
+        number = sheetView.findViewById(R.id.stockArrive);
         diseaseName = sheetView.findViewById(R.id.diseaseName);
         appointedDoctor = sheetView.findViewById(R.id.doctorAppoint);
         status = sheetView.findViewById(R.id.status);
@@ -233,7 +242,7 @@ public class Patients extends AppCompatActivity implements PatientListeners {
         bottomSheetDialog.show();
     }
 
-    private void getCountries() {
+    private void getPatients() {
         @SuppressLint("StaticFieldLeak")
         class getPatientTask extends AsyncTask<Void, Void, List<Patient>> {
 
@@ -265,5 +274,27 @@ public class Patients extends AppCompatActivity implements PatientListeners {
 
         toast.setView(view);
         toast.show();
+    }
+    private void Info() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(Patients.this, com.arnold.doctors.R.style.AlertDialog);
+        builder.setTitle("Note");
+        builder.setCancelable(false);
+
+        final TextView groupNameField = new TextView(Patients.this);
+        groupNameField.setText("1) Click on the add button and enter the required details. \n\n2) While choosing the status type, click on the cured or under treatment image to set the status type. \n\n3) After clicking on the correct symbol, it will appear in the list. You can click on it to delete, edit the status. \n\n4) You can search the patient by their name using the search field");
+        groupNameField.setPadding(20,30,20,20);
+        groupNameField.setTextColor(Color.BLACK);
+
+        groupNameField.setBackgroundColor(Color.WHITE);
+        builder.setView(groupNameField);
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
     }
 }

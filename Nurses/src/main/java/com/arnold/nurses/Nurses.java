@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arnold.doctors.DoctorsHome;
 import com.arnold.nurses.adapters.NurseAdapter;
 import com.arnold.nurses.database.NurseDatabase;
 import com.arnold.nurses.entities.Nurse;
@@ -60,6 +63,12 @@ public class Nurses extends AppCompatActivity implements NurseListeners {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(nurseAdapter);
         getNurse();
+        findViewById(com.arnold.doctors.R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Info();
+            }
+        });
         addNurse.setOnClickListener(v -> {
             addNurse.setEnabled(false);
             startActivity(new Intent(getApplicationContext(), AddNurse.class));
@@ -125,7 +134,7 @@ public class Nurses extends AppCompatActivity implements NurseListeners {
         name = sheetView.findViewById(R.id.nurseName);
         number = sheetView.findViewById(R.id.number);
         designation = sheetView.findViewById(R.id.nurseDesignation);
-        email = sheetView.findViewById(R.id.email);
+        email = sheetView.findViewById(R.id.floor);
         age = sheetView.findViewById(R.id.age);
         gender = sheetView.findViewById(R.id.gender);
         dateJoined = sheetView.findViewById(R.id.dateJoin);
@@ -255,5 +264,27 @@ public class Nurses extends AppCompatActivity implements NurseListeners {
 
         toast.setView(view);
         toast.show();
+    }
+    private void Info() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(Nurses.this, com.arnold.doctors.R.style.AlertDialog);
+        builder.setTitle("Note");
+        builder.setCancelable(false);
+
+        final TextView groupNameField = new TextView(Nurses.this);
+        groupNameField.setText("1) Click on the add button and enter the required details. \n\n2) While choosing the profile type, click on the male or female image to set the profile type. \n\n3) After clicking on the correct symbol, it will appear in the list. You can click on it to delete, edit the details of the nurses. \n\n4) You can search the nurses by their name using the search field");
+        groupNameField.setPadding(20,30,20,20);
+        groupNameField.setTextColor(Color.BLACK);
+
+        groupNameField.setBackgroundColor(Color.WHITE);
+        builder.setView(groupNameField);
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
     }
 }

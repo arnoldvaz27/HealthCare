@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +19,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +33,7 @@ import com.arnold.services.listeners.ServiceListeners;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @SuppressWarnings({"deprecation"})
@@ -38,6 +44,8 @@ public class Services extends AppCompatActivity implements ServiceListeners {
     private AlertDialog dialogAddService;
     private Service service;
     private BottomSheetDialog bottomSheetDialog;
+    EditText serviceName,startDate;
+    ImageView startDateImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +63,13 @@ public class Services extends AppCompatActivity implements ServiceListeners {
         serviceAdapter = new ServiceAdapter(serviceList, Services.this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(serviceAdapter);
-        getCountries();
+        getServices();
+        findViewById(com.arnold.doctors.R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Info();
+            }
+        });
         addService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,13 +85,21 @@ public class Services extends AppCompatActivity implements ServiceListeners {
                         dialogAddService.getWindow().setBackgroundDrawable(new ColorDrawable(0));
                     }
 
-                    final EditText serviceName,startDate;
+
                     serviceName = view.findViewById(R.id.serviceName);
                     startDate = view.findViewById(R.id.startDate);
+                    startDateImage = view.findViewById(R.id.startDateImage);
 
                     serviceName.setSelection(serviceName.getText().length());
                     serviceName.requestFocus();
                     serviceName.getShowSoftInputOnFocus();
+
+                    startDateImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Click(startDateImage);
+                        }
+                    });
 
                     view.findViewById(R.id.textAdd).setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -118,7 +140,8 @@ public class Services extends AppCompatActivity implements ServiceListeners {
 
                     });
                 }
-
+                dialogAddService.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 dialogAddService.show();
             }
         });
@@ -142,6 +165,35 @@ public class Services extends AppCompatActivity implements ServiceListeners {
         });
     }
 
+    public void Click(View v) {
+
+        if (v == startDateImage) {
+
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            int mYear = c.get(Calendar.YEAR);
+            int mMonth = c.get(Calendar.MONTH);
+            int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+
+                            startDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+
+                        }
+                    }, mYear, mMonth, mDay);
+            datePickerDialog.show();
+        }
+
+    }
+
+
     @Override
     public void onServiceClicked(Service service, int position) {
         this.service = service;
@@ -152,7 +204,7 @@ public class Services extends AppCompatActivity implements ServiceListeners {
         serviceAdapter = new ServiceAdapter(serviceList, Services.this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(serviceAdapter);
-        getCountries();
+        getServices();
     }
     @SuppressLint("SetTextI18n")
     void showToast() {
@@ -167,7 +219,7 @@ public class Services extends AppCompatActivity implements ServiceListeners {
         toast.setView(view);
         toast.show();
     }
-    private void getCountries() {
+    private void getServices() {
         @SuppressLint("StaticFieldLeak")
         class getServiceTask extends AsyncTask<Void, Void, List<Service>> {
 
@@ -240,5 +292,28 @@ public class Services extends AppCompatActivity implements ServiceListeners {
 
         bottomSheetDialog.setContentView(sheetView);
         bottomSheetDialog.show();
+    }
+
+    private void Info() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(Services.this,R.style.AlertDialog);
+        builder.setTitle("Note");
+        builder.setCancelable(false);
+
+        final TextView groupNameField = new TextView(Services.this);
+        groupNameField.setText("1) Click on the add button and enter the required details, for adding the start date of the click on the calendar icon and select the required date and click on add to save. \n\n2) After adding the service, it will appear in the list. You can click on it to view it. \n\n3) You can search the service by the name using the search field. \n\n4) Service is the section in which you can note down the types of facilities that are provided by the hospital with it's initially start date");
+        groupNameField.setPadding(20,30,20,20);
+        groupNameField.setTextColor(Color.BLACK);
+
+        groupNameField.setBackgroundColor(Color.WHITE);
+        builder.setView(groupNameField);
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
     }
 }

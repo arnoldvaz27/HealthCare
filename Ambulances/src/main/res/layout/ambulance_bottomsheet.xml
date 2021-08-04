@@ -103,7 +103,7 @@
                 app:tint="@color/white" />
 
             <TextView
-                android:id="@+id/email"
+                android:id="@+id/floor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"

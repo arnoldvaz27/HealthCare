@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -62,6 +65,12 @@ public class Beds extends AppCompatActivity implements BedListeners {
         RecyclerView.setHasFixedSize(true);
         RecyclerView.setAdapter(bedAdapter);
         getBed();
+        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Info();
+            }
+        });
         addBed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +92,7 @@ public class Beds extends AppCompatActivity implements BedListeners {
                     Spinner BedChoose;
                     bedNumber = view.findViewById(R.id.name);
                     roomNumber = view.findViewById(R.id.roomNumber);
-                    floor = view.findViewById(R.id.email);
+                    floor = view.findViewById(R.id.floor);
                     status = view.findViewById(R.id.status);
                     BedChoose = view.findViewById(R.id.statusChoose);
                     BedStrings = getResources().getStringArray(R.array.BedStatus);
@@ -154,7 +163,8 @@ public class Beds extends AppCompatActivity implements BedListeners {
 
                     });
                 }
-
+                dialogAddBed.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 dialogAddBed.show();
             }
         });
@@ -223,6 +233,7 @@ public class Beds extends AppCompatActivity implements BedListeners {
 
         new getBedTask().execute();
     }
+    @SuppressLint("SetTextI18n")
     private void BottomSheet() {
         bottomSheetDialog = new BottomSheetDialog(Beds.this,R.style.BottomSheetTheme);
         bottomSheetDialog.setCanceledOnTouchOutside(false);
@@ -245,15 +256,15 @@ public class Beds extends AppCompatActivity implements BedListeners {
         viewingGrid = sheetView.findViewById(R.id.viewingGrid);
         bedNumber = sheetView.findViewById(R.id.name);
         roomNumber = sheetView.findViewById(R.id.roomNumber);
-        floor = sheetView.findViewById(R.id.email);
+        floor = sheetView.findViewById(R.id.floor);
         status = sheetView.findViewById(R.id.status);
         statusLayout = sheetView.findViewById(R.id.statusLayout);
         BedChoose = sheetView.findViewById(R.id.statusChoose);
 
-        bedNumber.setText(bed.getBedNumber());
-        roomNumber.setText(bed.getRoomNumber());
-        floor.setText(bed.getFloor());
-        status.setText(bed.getStatus());
+        bedNumber.setText("Bed Number: "+bed.getBedNumber());
+        roomNumber.setText("Room Number: "+bed.getRoomNumber());
+        floor.setText("Floor Number: "+bed.getFloor());
+        status.setText("Status: "+bed.getStatus());
 
         BedStrings = getResources().getStringArray(R.array.BedStatus);
 
@@ -276,6 +287,10 @@ public class Beds extends AppCompatActivity implements BedListeners {
             }
         });
         Edit.setOnClickListener(v -> {
+            bedNumber.setText(bed.getBedNumber());
+            roomNumber.setText(bed.getRoomNumber());
+            floor.setText(bed.getFloor());
+            status.setText(bed.getStatus());
             viewingGrid.setVisibility(View.GONE);
             editingGrid.setVisibility(View.VISIBLE);
             statusLayout.setVisibility(View.VISIBLE);
@@ -353,4 +368,26 @@ public class Beds extends AppCompatActivity implements BedListeners {
         bottomSheetDialog.show();
     }
 
+    private void Info() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(Beds.this,R.style.AlertDialog);
+        builder.setTitle("Note");
+        builder.setCancelable(false);
+
+        final TextView groupNameField = new TextView(Beds.this);
+        groupNameField.setText("1) Click on the add button and enter the required details. \n\n2) While setting the status, click on the red field and then select the status type. \n\n3) After adding the bed, it will appear in the list. You can click on it to delete, edit status. \n\n4) You can search the bed by the bed number using the search field");
+        groupNameField.setPadding(20,30,20,20);
+        groupNameField.setTextColor(Color.BLACK);
+
+        groupNameField.setBackgroundColor(Color.WHITE);
+        builder.setView(groupNameField);
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
+    }
 }

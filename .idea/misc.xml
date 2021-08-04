@@ -41,6 +41,37 @@
         <entry key="..\:/AndroidProjects/HealthCare/app/src/main/res/layout/home.xml" value="0.17777777777777778" />
         <entry key="..\:/AndroidProjects/HealthCare/app/src/main/res/layout/login.xml" value="0.22" />
         <entry key="..\:/AndroidProjects/HealthCare/app/src/main/res/layout/splashscreen.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Ambulances/src/main/res/layout/ambulance_bottomsheet.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Ambulances/src/main/res/layout/ambulances.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Ambulances/src/main/res/layout/item_container_ambulance.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Ambulances/src/main/res/layout/layout_add_ambulance.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Beds/src/main/res/layout/bed_bottomsheet.xml" value="0.2" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Beds/src/main/res/layout/beds.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Beds/src/main/res/layout/item_container_bed.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Beds/src/main/res/layout/layout_add_bed.xml" value="0.16" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Canteen/src/main/res/layout/canteen.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Canteen/src/main/res/layout/canteen_bottomsheet.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Canteen/src/main/res/layout/item_container_canteen.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Canteen/src/main/res/layout/layout_add_canteen.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Doctors/src/main/res/drawable/info_stylish.xml" value="0.22135416666666666" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Doctors/src/main/res/layout/add_doctor.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Doctors/src/main/res/layout/doctor_bottomsheet.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Doctors/src/main/res/layout/doctors_home.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Doctors/src/main/res/layout/item_container_doctors.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Medicines/src/main/res/layout/item_container_medicine.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Medicines/src/main/res/layout/layout_add_medicines.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Medicines/src/main/res/layout/medicine_bottomsheet.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Medicines/src/main/res/layout/medicines.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Nurses/src/main/res/layout/add_nurse.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Nurses/src/main/res/layout/item_container_nurses.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Nurses/src/main/res/layout/nurse_bottomsheet.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Nurses/src/main/res/layout/nurses.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Patients/src/main/res/layout/add_patient.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Patients/src/main/res/layout/item_container_patient.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Patients/src/main/res/layout/patients.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Services/src/main/res/layout/item_container_service.xml" value="0.1925925925925926" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Services/src/main/res/layout/layout_add_service.xml" value="0.20520833333333333" />
+        <entry key="..\:/Github Android Codes/Career Projects/HealthCare/HealthCare/Services/src/main/res/layout/services.xml" value="0.2891566265060241" />
       </map>
     </option>
   </component>

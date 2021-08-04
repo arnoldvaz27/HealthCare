@@ -86,7 +86,7 @@ public class AddPatient extends AppCompatActivity {
 
     private void initView() {
         name = findViewById(R.id.name);
-        phoneNumber = findViewById(R.id.phoneNumber);
+        phoneNumber = findViewById(R.id.stockArrive);
         diseaseType = findViewById(R.id.diseaseType);
         doctorAppointed = findViewById(R.id.doctorAppointed);
         status = findViewById(R.id.status);

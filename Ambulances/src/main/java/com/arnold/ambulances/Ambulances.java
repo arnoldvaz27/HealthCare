@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -67,6 +70,12 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
         ambulanceRecyclerView.setHasFixedSize(true);
         ambulanceRecyclerView.setAdapter(ambulanceAdapter);
         getAmbulance();
+        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Info();
+            }
+        });
         addAmbulance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +97,7 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
                     Spinner AmbulanceChooseStatus;
                     inputNumberPlate = view.findViewById(R.id.inputNumberPlate);
                     persons = view.findViewById(R.id.persons);
-                    email = view.findViewById(R.id.email);
+                    email = view.findViewById(R.id.floor);
                     phoneNumber = view.findViewById(R.id.phone);
                     status = view.findViewById(R.id.status);
                     AmbulanceChooseStatus = view.findViewById(R.id.statusChoose);
@@ -168,7 +177,8 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
 
                     });
                 }
-
+                dialogAddAmbulance.getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 dialogAddAmbulance.show();
             }
         });
@@ -254,7 +264,7 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
 
         numberPlate = sheetView.findViewById(R.id.numberPlate);
         persons = sheetView.findViewById(R.id.persons);
-        email = sheetView.findViewById(R.id.email);
+        email = sheetView.findViewById(R.id.floor);
         phone = sheetView.findViewById(R.id.phone);
         status = sheetView.findViewById(R.id.status);
         Close = sheetView.findViewById(R.id.close);
@@ -379,5 +389,27 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
 
         bottomSheetDialog.setContentView(sheetView);
         bottomSheetDialog.show();
+    }
+    private void Info() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(Ambulances.this,R.style.AlertDialog);
+        builder.setTitle("Note");
+        builder.setCancelable(false);
+
+        final TextView groupNameField = new TextView(Ambulances.this);
+        groupNameField.setText("1) Click on the add button and enter the required details. \n\n2) While setting the status, click on the red field and then select the status type. \n\n3) After adding the ambulance, it will appear in the list. You can click on it to delete, edit status. \n\n4) You can search the ambulance by the vehicle's number plate using the search field");
+        groupNameField.setPadding(20,30,20,20);
+        groupNameField.setTextColor(Color.BLACK);
+
+        groupNameField.setBackgroundColor(Color.WHITE);
+        builder.setView(groupNameField);
+
+        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        builder.show();
     }
 }
