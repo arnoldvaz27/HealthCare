@@ -1,14 +1,8 @@
 package com.arnold.medicines;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -19,12 +13,16 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.arnold.medicines.adapters.MedicinesAdapter;
 import com.arnold.medicines.database.MedicinesDatabase;
@@ -65,12 +63,7 @@ public class Medicines extends AppCompatActivity implements MedicinesListeners {
         RecyclerView.setHasFixedSize(true);
         RecyclerView.setAdapter(medicinesAdapter);
         getMedicine();
-        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Info();
-            }
-        });
+        findViewById(R.id.info).setOnClickListener(v -> Info());
         addMedicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,18 +90,8 @@ public class Medicines extends AppCompatActivity implements MedicinesListeners {
                     name.setSelection(name.getText().length());
                     name.requestFocus();
 
-                    stockExpiryImage.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Click(stockExpiryImage);
-                        }
-                    });
-                    stockArriveImage.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Click(stockArriveImage);
-                        }
-                    });
+                    stockExpiryImage.setOnClickListener(v12 -> Click(stockExpiryImage));
+                    stockArriveImage.setOnClickListener(v13 -> Click(stockArriveImage));
 
 
                     view.findViewById(R.id.textAdd).setOnClickListener(new View.OnClickListener() {
@@ -140,8 +123,11 @@ public class Medicines extends AppCompatActivity implements MedicinesListeners {
                                         dialogAddMedicines.cancel();
                                     }
                                 }
-
                                 new saveMedicineTask().execute();
+                                name.setText("");
+                                stock.setText("");
+                                stockExpiry.setText("");
+                                stockArrived.setText("");
                             }
                         }
                     });
@@ -351,18 +337,8 @@ public class Medicines extends AppCompatActivity implements MedicinesListeners {
             int mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @SuppressLint("SetTextI18n")
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            stockExpiry.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-
-                        }
-                    }, mYear, mMonth, mDay);
+            @SuppressLint("SetTextI18n") DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    (view, year, monthOfYear, dayOfMonth) -> stockExpiry.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
             datePickerDialog.show();
         }
         if (v == stockArriveImage) {
@@ -374,18 +350,8 @@ public class Medicines extends AppCompatActivity implements MedicinesListeners {
             int mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @SuppressLint("SetTextI18n")
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            stockArrived.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-
-                        }
-                    }, mYear, mMonth, mDay);
+            @SuppressLint("SetTextI18n") DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    (view, year, monthOfYear, dayOfMonth) -> stockArrived.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
             datePickerDialog.show();
         }
 
@@ -403,12 +369,7 @@ public class Medicines extends AppCompatActivity implements MedicinesListeners {
         groupNameField.setBackgroundColor(Color.WHITE);
         builder.setView(groupNameField);
 
-        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        builder.setPositiveButton("Done", (dialogInterface, i) -> dialogInterface.cancel());
 
         builder.show();
     }

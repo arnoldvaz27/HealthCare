@@ -27,16 +27,15 @@ public class SplashScreen extends AppCompatActivity {
                 Intent i = new Intent(SplashScreen.this,
                         Login.class);
                 SplashScreen.this.startActivity(i);
-                SplashScreen.this.finish();
+                SplashScreen.this.finishAffinity();
             }, SPLASH_SCREEN_TIME_OUT);
         }
         else{
-
             new Handler().postDelayed(() -> {
                 Intent i = new Intent(SplashScreen.this,
                         Home.class);
                 SplashScreen.this.startActivity(i);
-                SplashScreen.this.finish();
+                SplashScreen.this.finishAffinity();
             }, SPLASH_SCREEN_TIME_OUT);
         }
     }

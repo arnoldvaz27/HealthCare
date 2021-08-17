@@ -1,13 +1,7 @@
 package com.arnold.ambulances;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -27,6 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.arnold.ambulances.adapters.AmbulanceAdapter;
 import com.arnold.ambulances.database.AmbulanceDatabase;
@@ -70,12 +69,7 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
         ambulanceRecyclerView.setHasFixedSize(true);
         ambulanceRecyclerView.setAdapter(ambulanceAdapter);
         getAmbulance();
-        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Info();
-            }
-        });
+        findViewById(R.id.info).setOnClickListener(v -> Info());
         addAmbulance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,6 +161,11 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
                                 }
 
                                 new SaveAmbulanceTask().execute();
+                                inputNumberPlate.setText("");
+                                persons.setText("");
+                                email.setText("");
+                                phoneNumber.setText("");
+                                status.setText("");
                             }
                         }
                     });
@@ -403,12 +402,7 @@ public class Ambulances extends AppCompatActivity implements AmbulanceListeners 
         groupNameField.setBackgroundColor(Color.WHITE);
         builder.setView(groupNameField);
 
-        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        builder.setPositiveButton("Done", (dialogInterface, i) -> dialogInterface.cancel());
 
         builder.show();
     }

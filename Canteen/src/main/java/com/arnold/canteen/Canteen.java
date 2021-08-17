@@ -1,13 +1,7 @@
 package com.arnold.canteen;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -17,13 +11,17 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.arnold.canteen.adapters.CanteenAdapter;
 import com.arnold.canteen.database.CanteenDatabase;
@@ -61,19 +59,14 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
         RecyclerView.setHasFixedSize(true);
         RecyclerView.setAdapter(canteenAdapter);
         getFood();
-        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Info();
-            }
-        });
+        findViewById(R.id.info).setOnClickListener(v -> Info());
         addFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (dialogAddFood == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Canteen.this);
                     View view = LayoutInflater.from(Canteen.this).inflate(
-                            R.layout.layout_add_canteen, (ViewGroup) findViewById(R.id.layoutAddFoodContainer)
+                            R.layout.layout_add_canteen, findViewById(R.id.layoutAddFoodContainer)
                     );
                     builder.setView(view);
 
@@ -120,6 +113,8 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
                                 }
 
                                 new saveFoodTask().execute();
+                                foodName.setText("");
+                                price.setText("");
                             }
                         }
                     });
@@ -319,12 +314,7 @@ public class Canteen extends AppCompatActivity implements CanteenListeners {
         groupNameField.setBackgroundColor(Color.WHITE);
         builder.setView(groupNameField);
 
-        builder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        });
+        builder.setPositiveButton("Done", (dialogInterface, i) -> dialogInterface.cancel());
 
         builder.show();
     }
